@@ -1,3 +1,9 @@
 node_modules
 
 .env
+
+src/assets/options/*
+!src/assets/options/.gitkeep
+
+src/assets/points/*
+!src/assets/points/.gitkeep
