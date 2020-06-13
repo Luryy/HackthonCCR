@@ -7,8 +7,10 @@ export async function up (knex: Knex) {
             .unsigned()
             .references('id')
             .inTable('points');
-        table.string('comment').notNullable();
+        table.string('comment');
         table.string('author').notNullable();
+        table.integer('note').notNullable();
+
     })
 };
 

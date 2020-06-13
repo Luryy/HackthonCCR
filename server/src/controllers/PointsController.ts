@@ -45,7 +45,15 @@ class PointsController{
             .where('point_options.point_id', id)
             .select('options.title');
 
-        return res.json({point: serializedPoint, options});
+        const description = await knex('point_comments')
+            .where('point_comments.point_id', id)
+            .select('comment', 'author', 'note')
+            .limit(10);
+
+        const average = await knex('point_comments')
+            .avg('note as Average');
+
+        return res.json({point: serializedPoint, options, average, description});
     }
 
     async create (req: Req, res: Res){
